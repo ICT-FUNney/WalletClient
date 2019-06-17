@@ -9,7 +9,7 @@ jobs:
     branches:
       only:
         - master
-        - dev
+        - develop
 
     steps:
       - checkout
