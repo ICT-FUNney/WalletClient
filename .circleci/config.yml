@@ -90,6 +90,7 @@ jobs:
       - run:
           name: Git push
           command: |
+            git push origin --tags
             git push origin ${CIRCLE_BRANCH}:develop
             git push origin ${CIRCLE_BRANCH}:master
             git push origin :${CIRCLE_BRANCH}
