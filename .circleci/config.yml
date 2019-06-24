@@ -6,22 +6,22 @@ jobs:
 
     working_directory: ~/repo
 
-    branches:
-      only:
-        - master
-        - develop
-
     steps:
       - checkout
 
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies-{{ checksum "package-lock.json" }}
             - v1-dependencies-
 
       - run:
           name: Install dependencies
           command: npm i
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
 
       - run:
           name: Build
@@ -30,11 +30,6 @@ jobs:
       - run:
           name: Check dist
           command: ls -la public
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
 
       - run:
           name: Install Firebase-tools
@@ -53,3 +48,62 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "develop" ]; then
               firebase deploy --project "$FIREBASE_ID_2" --token "$FIREBASE_TOKEN"
             fi
+
+  versioning:
+    docker:
+      - image: node:10.15.2
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-
+
+      - run:
+          name: Install dependencies
+          command: npm i
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+
+      - run:
+          name: Set Git config
+          command: |
+            git config user.email circleci-fintech@gmail.com
+            git config user.name circleci-fintech
+
+      - run:
+          name: Make CHANGELOG.md
+          command: |
+            npm install -g standard-version
+            git checkout ${CIRCLE_BRANCH}
+            git pull origin ${CIRCLE_BRANCH}
+            BRANCH=${CIRCLE_BRANCH##*/}
+            standard-version --release-as $BRANCH
+
+      - run:
+          name: Git push
+          command: |
+            git push origin ${CIRCLE_BRANCH}:develop
+            git push origin ${CIRCLE_BRANCH}:master
+            git push origin :${CIRCLE_BRANCH}
+
+workflows:
+  version: 2
+  build_flow:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: /master|develop/
+
+      - versioning:
+          filters:
+            branches:
+              only: /^release\/(major|minor|patch)$/
