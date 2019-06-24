@@ -45,7 +45,7 @@ jobs:
       - run:
           name: Deploy to develop
           command: |
-            if [ "${CIRCLE_BRANCH}" == "develop" ]; then
+            if [ "${CIRCLE_BRANCH}" == "test" ]; then
               firebase deploy --project "$FIREBASE_ID_2" --token "$FIREBASE_TOKEN"
             fi
 
@@ -102,7 +102,7 @@ workflows:
       - build:
           filters:
             branches:
-              only: /master|develop/
+              only: /master|develop|test/
 
       - versioning:
           filters:
