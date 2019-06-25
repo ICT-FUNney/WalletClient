@@ -1,7 +1,7 @@
 import React from 'react';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { Router, Route, Switch } from 'react-router-dom'
-import history from '../Helpers/history'
+import history from '../helpers/history'
 
 import Header from './Header'
 import Footer from './Footer'
