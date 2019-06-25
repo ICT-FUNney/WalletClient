@@ -1,6 +1,6 @@
 import React from 'react';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import { Router, Route, Switch } from 'react-router-dom'
+import { Router, Route, Switch, Redirect } from 'react-router-dom'
 import history from '../Helpers/history'
 
 import Header from './Header'
@@ -10,6 +10,7 @@ import Home from './Home'
 import Send from './Send'
 import Settings from './Settings'
 import Error from './404'
+import { useSelector } from "react-redux";
 
 const theme = createMuiTheme({
   palette: {
@@ -17,10 +18,11 @@ const theme = createMuiTheme({
   },
 });
 
-// TODO:サインイン情報がないときはloginへリダイレクト
 function App() {
+  const { id } = useSelector(state => state.signInReducer);
   return (
     <Router history={history}>
+      { !id && <Redirect to="/login"/>}
       <MuiThemeProvider theme={theme}>
         {/* Headerを表示させるかどうか */}
         <Switch>
