@@ -1,7 +1,7 @@
 ---
 name: Feature request
 about: Suggest an idea for this project
-title: "[Task]"
+title: "[Feature]"
 labels: enhancement
 assignees: ''
 
@@ -10,10 +10,10 @@ assignees: ''
 ## 要求する機能の説明(Describe the ideal solution or feature request)
 A clear and concise description of what the customer wants to happen.
 
-## 難易度、影響度、使用率(Difficulty, impact, and usage score)
-| Technical difficulty | User goals | Usage frequency |
-|--------------------| --------------------| --------------------|
-| ie. Small, medium, large (filled out after submission) |  ie. How important is this to the user, what the user wants to accomplish | ie. Daily, weekly, monthly |
+## 難易度、見積もり(時間単位)、影響度、使用率(Difficulty, Remaining Work Times, impact, and usage score)
+| Technical difficulty | Remaining Work | User goals | Usage frequency |
+|--------------------| --------------------| --------------------| --------------------|
+| ie. Small, medium, large (filled out after submission) | An estimate of the number of units of works remaining to complete this task | ie. How important is this to the user, what the user wants to accomplish | ie. Daily, weekly, monthly |
 
 ## Image
 
