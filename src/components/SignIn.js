@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { signInRequest, snackbarClose } from "../actions/SignIn";
 import { TextField, Button, Snackbar, SnackbarContent, makeStyles } from '@material-ui/core';
@@ -15,13 +15,18 @@ function SignIn() {
     password: '',
   });
 
+  useEffect(() => {
+    if(snackbar) {
+      document.getElementById('inputFields').focus()
+    }
+  },[snackbar]);
+
   const handleChange = key => event => {
     setData({ ...data, [key]: event.target.value });
   };
 
   function signIn() {
     dispatch(signInRequest(data));
-    document.getElementById('signInButton').blur()
   }
 
   function snackClose() {
@@ -36,8 +41,9 @@ function SignIn() {
       <div className={classes.title}>
         FUNney
       </div>
-      <div className={classes.inputFields}>
+      <form id='inputFields' tabIndex='-1' className={classes.inputFields} noValidate autoComplete="off">
         <TextField
+          id="id"
           label="User ID"
           className={classes.textField}
           value={data.id}
@@ -45,6 +51,7 @@ function SignIn() {
           margin="normal"
         />
         <TextField
+          id="password"
           label="Password"
           className={classes.textField}
           type="password"
@@ -52,7 +59,7 @@ function SignIn() {
           onChange={handleChange('password')}
           margin="normal"
         />
-      </div>
+      </form>
       <div className={classes.buttonContainer}>
         <Button id='signInButton' className={classes.button} variant="contained" onClick={signIn}>
           Sign in
@@ -71,6 +78,7 @@ function SignIn() {
       >
         <SnackbarContent
           className={classes.snackbar}
+          aria-live="assertive"
           aria-describedby="client-snackbar"
           message={
             <span id="message-id" className={classes.snackbarContent}>
@@ -107,7 +115,8 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
   },
   inputFields: {
-    width: '100%'
+    width: '100%',
+    outline: 'none'
   },
   textField: {
     width: '100%',
