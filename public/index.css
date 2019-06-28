@@ -6,9 +6,9 @@ body{
     margin: 0;
     padding: 0;
     height: 100%;
-    background: #FF8C00
+    /* background: #FF8C00 */
 }
 #root {
-    background: #ffffff;
+    /* background: #ffffff; */
     height: 100%;
 }
