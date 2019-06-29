@@ -6,6 +6,7 @@ import history from '../helpers/history'
 import Header from './Header'
 import Footer from './Footer'
 import SignIn from './SignIn'
+import SignUp from './SignUp'
 import Home from './Home'
 import Send from './Send'
 import Settings from './Settings'
@@ -25,6 +26,7 @@ function App() {
         {/* Headerを表示させるかどうか */}
         <Switch>
           <Route exact path='/login'/>
+          <Route exact path='/signup'/>
           <Route path='/' component={Header} />
         </Switch>
 
@@ -32,6 +34,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/login' component={SignIn}/>
+          <Route exact path='/signup' component={SignUp}/>
           <Route exact path='/send' component={Send}/>
           <Route exact path='/settings' component={Settings}/>
           <Route path='/' component={Error}/>
@@ -40,6 +43,7 @@ function App() {
         {/* Footerを表示させるかどうか */}
         <Switch>
           <Route exact path='/login'/>
+          <Route exact path='/signup'/>
           <Route path='/' component={Footer} />
         </Switch>
       </MuiThemeProvider>
