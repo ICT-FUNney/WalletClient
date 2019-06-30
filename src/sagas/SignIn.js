@@ -14,8 +14,13 @@ function* signIn(action) {
   }
 }
 
+function* signOut() {
+  yield call(history.push, '/');
+}
+
 const saga = [
-  takeEvery('SIGN_IN_REQUEST', signIn)
+  takeEvery('SIGN_IN_REQUEST', signIn),
+  takeEvery('SIGN_OUT', signOut),
 ];
 
 export default saga;
