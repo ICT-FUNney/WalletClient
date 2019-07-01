@@ -7,6 +7,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
+import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@material-ui/core';
+
 const useStyles = makeStyles(theme => ({
   SendPage: {
     display: "flex",
@@ -37,6 +39,44 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const AlertDialog = (props) => {
+  if(props.flag){
+    return (
+      <div>
+        <Dialog
+          open={true}
+          onClose={()=>{props.closeDialog()}}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{"確認"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              {`${props.number}さんに${props.money}FUNneyを送信しますか`}
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={()=>{props.closeDialog()}} color="primary">
+              CANCEL
+            </Button>
+            <Button
+              onClick={() => {
+                props.send()
+                props.closeDialog()
+              }}
+            color="primary" autoFocus>
+              OK
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+    );
+  }
+  else{
+    return "";
+  }
+}
+
 function Send() {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -52,6 +92,7 @@ function Send() {
   const [value, setValue] = React.useState({
     money: "",
     number: "",
+    dialog_flag: false,
   });
 
   return (
@@ -84,9 +125,25 @@ function Send() {
         <Button
           variant="contained"
           className={classes.button}
-          onClick={send}>
+          onClick={()=>{
+            setValue({
+              ...value,
+              dialog_flag: true,
+            })
+          }}>
           Send
         </Button>
+        <AlertDialog
+          flag={value.dialog_flag}
+          send={send}
+          number={value.number}
+          money={value.money}
+          closeDialog={()=>
+            setValue({
+              ...value,
+              dialog_flag: false,
+            })
+           }/>
       </div>
     </div>
   )
