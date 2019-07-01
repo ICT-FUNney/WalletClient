@@ -11,7 +11,7 @@ function* signIn(action) {
     yield put(snackbarOpen());
   } else {
     yield put(signInSuccess(action.data));
-    const GetAllFunneyTask = yield fork(GetAllFunney, action.data.id);
+    const GetAllFunneyTask = yield fork(GetAllFunney, action);
     yield join(GetAllFunneyTask);
     yield call(history.push, '/');
   }
@@ -24,6 +24,8 @@ function* signUp(action) {
     yield put(snackbarOpen());
   } else {
     yield put(signUpSuccess(action.data));
+    const GetAllFunneyTask = yield fork(GetAllFunney, action);
+    yield join(GetAllFunneyTask);
     yield call(history.push, '/');
   }
 }
