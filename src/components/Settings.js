@@ -10,7 +10,8 @@ const useStyles = makeStyles({
   SettingsPage: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
+    gridRow: '2'
   },
   SettingsBox: {
     width: "80vw",
