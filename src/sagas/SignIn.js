@@ -4,8 +4,6 @@ import {  signInApi, signUpApi } from '../apis/SignIn';
 import { GetAllFunney } from './Funney'
 import history from '../helpers/history';
 
-
-
 function* signIn(action) {
   const { error } = yield call(signInApi, action.data);
   if (error) {
@@ -31,7 +29,7 @@ function* signUp(action) {
 }
 
 function* signOut() {
-  yield call(history.push, '/');
+  yield call(history.push, '/login');
 }
 
 const saga = [
