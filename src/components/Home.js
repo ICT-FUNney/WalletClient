@@ -8,6 +8,7 @@ const useStyles = makeStyles({
   o_Home: {
     color: '#000000',
     margin: '2vh 10vw',
+    gridRow: '2',
   },
   o_funney: {
     display: 'grid',

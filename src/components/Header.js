@@ -9,6 +9,7 @@ const useStyles = makeStyles({
   },
   app_bar: {
     position: 'fixed',
+    gridRow: '1',
   },
 });
 
