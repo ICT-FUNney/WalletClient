@@ -49,3 +49,9 @@ export const snackbarClose = () => {
     type: 'SNACKBAR_CLOSE',
   }
 };
+
+export const signOut = () => {
+  return {
+    type: 'SIGN_OUT',
+  }
+};

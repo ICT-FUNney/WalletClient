@@ -25,6 +25,11 @@ export default function signInReducer(state = initState, action) {
         ...state,
         snackbar: false
       };
+    case 'SIGN_OUT':
+      return {
+        ...state,
+        id: '',
+      };
     default:
       return state;
   }
