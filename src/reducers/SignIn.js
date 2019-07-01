@@ -10,6 +10,11 @@ export default function signInReducer(state = initState, action) {
         ...state,
         id: action.data.id
       };
+    case 'SIGN_UP_SUCCESS':
+      return {
+        ...state,
+        id: action.data.id
+      };
     case 'SNACKBAR_OPEN':
       return {
         ...state,

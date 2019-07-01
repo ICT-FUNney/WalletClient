@@ -1,7 +1,8 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
-import { signInSuccess, signInFailed, snackbarOpen } from '../actions/SignIn'
-import { signInApi } from '../apis/SignIn';
-import history from '../Helpers/history'
+import { call, put, fork, join, takeEvery } from 'redux-saga/effects';
+import { signInSuccess, signInFailed, signUpSuccess, signUpFailed, snackbarOpen } from '../actions/SignIn';
+import {  signInApi, signUpApi } from '../apis/SignIn';
+import { GetAllFunney } from './Funney'
+import history from '../helpers/history';
 
 function* signIn(action) {
   const { error } = yield call(signInApi, action.data);
@@ -10,6 +11,19 @@ function* signIn(action) {
     yield put(snackbarOpen());
   } else {
     yield put(signInSuccess(action.data));
+    const GetAllFunneyTask = yield fork(GetAllFunney, action.data.id);
+    yield join(GetAllFunneyTask);
+    yield call(history.push, '/');
+  }
+}
+
+function* signUp(action) {
+  const { error } = yield call(signUpApi, action.data);
+  if (error) {
+    yield put(signUpFailed());
+    yield put(snackbarOpen());
+  } else {
+    yield put(signUpSuccess(action.data));
     yield call(history.push, '/');
   }
 }
@@ -21,6 +35,7 @@ function* signOut() {
 const saga = [
   takeEvery('SIGN_IN_REQUEST', signIn),
   takeEvery('SIGN_OUT', signOut),
+  takeEvery('SIGN_UP_REQUEST', signUp),
 ];
 
 export default saga;

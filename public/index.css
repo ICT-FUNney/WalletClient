@@ -1,0 +1,16 @@
+html{
+    height: 100%;
+    width:100%;
+}
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #FF8C00
+}
+#root {
+    background: #ffffff;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 56px 1fr auto;
+}
