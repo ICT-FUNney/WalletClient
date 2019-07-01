@@ -3,7 +3,7 @@ import { getAllFunneySuccess, getAllFunneyFailed } from '../actions/Funney'
 import { getFunneyApi } from '../apis/Funney';
 
 export function* GetAllFunney(action) {
-  const { error, body } = yield call(getFunneyApi, action.data);
+  const { error, body } = yield call(getFunneyApi, action.data.id);
   if (error) {
     yield put(getAllFunneyFailed());
   } else {
