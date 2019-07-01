@@ -3,7 +3,6 @@ import pathReducer from './Path'
 import signInReducer from './SignIn'
 import funneyReducer from './Funney'
 
-
 const reducers = combineReducers({
   pathReducer,
   signInReducer,
