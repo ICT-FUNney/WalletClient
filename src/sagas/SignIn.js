@@ -1,7 +1,8 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
-import { signInSuccess, signInFailed, snackbarOpen } from '../actions/SignIn'
+import { call, put, fork, join,takeEvery } from 'redux-saga/effects';
+import { signInSuccess, signInFailed, snackbarOpen } from '../actions/SignIn';
 import { signInApi } from '../apis/SignIn';
-import history from '../Helpers/history'
+import { GetAllFunney } from './Funney'
+import history from '../Helpers/history';
 
 function* signIn(action) {
   const { error } = yield call(signInApi, action.data);
@@ -10,6 +11,8 @@ function* signIn(action) {
     yield put(snackbarOpen());
   } else {
     yield put(signInSuccess(action.data));
+    const GetAllFunneyTask = yield fork(GetAllFunney, action.data.id);
+    yield join(GetAllFunneyTask);
     yield call(history.push, '/');
   }
 }
