@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
-import { getAllFunneyRequest } from "../actions/Funney";
 import { setPath } from "../actions/Path";
 
 const useStyles = makeStyles({
@@ -38,7 +37,7 @@ const useStyles = makeStyles({
 
 function Home() {
   const classes = useStyles();
-  const { id } = useSelector(state => state.signInReducer);
+  // const { id } = useSelector(state => state.signInReducer);
   const { funney } = useSelector(state => state.funneyReducer);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -46,9 +45,9 @@ function Home() {
   });
 
   // HomePageでリロードとかするかなって思って作ったけど、今回は実装してない
-  function getAllFunney() {
-    dispatch(getAllFunneyRequest(id));
-  }
+  // function getAllFunney() {
+  //   dispatch(getAllFunneyRequest(id));
+  // }
 
   return (
     <div className={classes.o_Home}>
