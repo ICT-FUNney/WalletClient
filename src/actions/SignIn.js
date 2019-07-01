@@ -18,6 +18,26 @@ export const signInFailed = () => {
   }
 };
 
+export const signUpRequest = (data) => {
+  return {
+    type: 'SIGN_UP_REQUEST',
+    data,
+  }
+};
+
+export const signUpSuccess = (data) => {
+  return {
+    type: 'SIGN_UP_SUCCESS',
+    data,
+  }
+};
+
+export const signUpFailed = () => {
+  return {
+    type: 'SIGN_UP_FAILED',
+  }
+};
+
 export const snackbarOpen = () => {
   return {
     type: 'SNACKBAR_OPEN',
