@@ -11,6 +11,8 @@ body{
 #root {
     background: #ffffff;
     height: 100%;
+    width: 100%;
     display: grid;
     grid-template-rows: 56px 1fr auto;
+    position: fixed;
 }

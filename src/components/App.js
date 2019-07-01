@@ -1,5 +1,5 @@
 import React from 'react';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme, MuiThemeProvider, makeStyles } from '@material-ui/core/styles';
 import { Router, Route, Switch, Redirect } from 'react-router-dom'
 import history from '../helpers/history'
 
@@ -15,37 +15,45 @@ import { useSelector } from "react-redux";
 
 const theme = createMuiTheme({
   palette: {
-    primary: {500: '#FF8C00'},
+    primary: { 500: '#FF8C00' },
   },
 });
-
+const useStyles = makeStyles({
+  main_body:{
+    position: 'fixed',
+    width: '100%',
+    top: '56px',
+  }
+})
 function App() {
+  const classes = useStyles();
   const { id } = useSelector(state => state.signInReducer);
   return (
     <Router history={history}>
-      { !id && <Redirect to="/login"/>}
+      {!id && <Redirect to="/login" />}
       <MuiThemeProvider theme={theme}>
         {/* Headerを表示させるかどうか */}
         <Switch>
-          <Route exact path='/login'/>
-          <Route exact path='/signup'/>
+          <Route exact path='/login' />
+          <Route exact path='/signup' />
           <Route path='/' component={Header} />
         </Switch>
 
         {/* 中央にを何を表示させるか */}
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/login' component={SignIn}/>
-          <Route exact path='/signup' component={SignUp}/>
-          <Route exact path='/send' component={Send}/>
-          <Route exact path='/settings' component={Settings}/>
-          <Route path='/' component={Error}/>
-        </Switch>
-
+        <div className={classes.main_body}>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/login' component={SignIn} />
+            <Route exact path='/signup' component={SignUp} />
+            <Route exact path='/send' component={Send} />
+            <Route exact path='/settings' component={Settings} />
+            <Route path='/' component={Error} />
+          </Switch>
+        </div>
         {/* Footerを表示させるかどうか */}
         <Switch>
-          <Route exact path='/login'/>
-          <Route exact path='/signup'/>
+          <Route exact path='/login' />
+          <Route exact path='/signup' />
           <Route path='/' component={Footer} />
         </Switch>
       </MuiThemeProvider>
