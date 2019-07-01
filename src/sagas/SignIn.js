@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { signInSuccess, signInFailed, snackbarOpen } from '../actions/SignIn'
 import { signInApi } from '../apis/SignIn';
-import history from '../Helpers/history'
+import history from '../helpers/history'
 
 function* signIn(action) {
   const { error } = yield call(signInApi, action.data);
