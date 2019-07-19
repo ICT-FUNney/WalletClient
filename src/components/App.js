@@ -9,6 +9,7 @@ import SignIn from './SignIn'
 import SignUp from './SignUp'
 import Home from './Home'
 import Send from './Send'
+import Request from './Request'
 import Settings from './Settings'
 import Error from './404'
 import { useSelector } from "react-redux";
@@ -23,11 +24,11 @@ function App() {
   const { id } = useSelector(state => state.signInReducer);
   return (
     <Router history={history}>
-      { !id && <Redirect to="/login"/>}
+      { !id && <Redirect to={`/signin${window.location.search}`}/>}
       <MuiThemeProvider theme={theme}>
         {/* Headerを表示させるかどうか */}
         <Switch>
-          <Route exact path='/login'/>
+          <Route exact path='/signin'/>
           <Route exact path='/signup'/>
           <Route path='/' component={Header} />
         </Switch>
@@ -35,16 +36,17 @@ function App() {
         {/* 中央にを何を表示させるか */}
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route exact path='/login' component={SignIn}/>
+          <Route exact path='/signin' component={SignIn}/>
           <Route exact path='/signup' component={SignUp}/>
           <Route exact path='/send' component={Send}/>
+          <Route exact path='/request' component={Request}/>
           <Route exact path='/settings' component={Settings}/>
           <Route path='/' component={Error}/>
         </Switch>
 
         {/* Footerを表示させるかどうか */}
         <Switch>
-          <Route exact path='/login'/>
+          <Route exact path='/signin'/>
           <Route exact path='/signup'/>
           <Route path='/' component={Footer} />
         </Switch>

@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import HomeIcon from '@material-ui/icons/Home';
 import SendIcon from '@material-ui/icons/Send';
+import RequestIcon from '@material-ui/icons/GetApp';
 import SettingsIcon from '@material-ui/icons/Settings';
 
 
@@ -34,6 +35,7 @@ function Footer() {
     >
       <BottomNavigationAction component={Link}  to="/" label="Home" icon={<HomeIcon />} />
       <BottomNavigationAction component={Link} to="/send" label="Send" icon={<SendIcon />} />
+      <BottomNavigationAction component={Link} to="/request" label="Request" icon={<RequestIcon />} />
       <BottomNavigationAction component={Link} to="/settings" label="Settings" icon={<SettingsIcon />} />
     </BottomNavigation>
   )

@@ -2,6 +2,7 @@ import { call, put, fork, join, takeEvery } from 'redux-saga/effects';
 import { signInSuccess, signInFailed, signUpSuccess, signUpFailed, snackbarOpen } from '../actions/SignIn';
 import {  signInApi, signUpApi } from '../apis/SignIn';
 import { GetAllFunney } from './Funney'
+import { getParam } from '../helpers/GetQueryParam'
 import history from '../helpers/history';
 
 function* signIn(action) {
@@ -13,7 +14,11 @@ function* signIn(action) {
     yield put(signInSuccess(action.data));
     const GetAllFunneyTask = yield fork(GetAllFunney, action);
     yield join(GetAllFunneyTask);
-    yield call(history.push, '/');
+    if (getParam('redirect',window.location.href)) {
+      yield call(history.push, `/${getParam('redirect',window.location.href)}${window.location.search}`)
+    } else {
+      yield call(history.push, '/');
+    }
   }
 }
 
