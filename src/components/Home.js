@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
 import { setPath } from "../actions/Path";
+//import Reload from "./Reload";
 
 const useStyles = makeStyles({
   o_Home: {
@@ -19,6 +20,9 @@ const useStyles = makeStyles({
     borderBottom: '#FF8C00',
     borderBottomWidth: '3px',
     borderBottomStyle: 'solid',
+    overflow: `scroll`,
+    '-webkit-overflow-scrolling': 'touch',
+    overflowScrolling: 'touch',
   },
   o_funnney_title: {
     justifSelf: 'center',
@@ -50,7 +54,8 @@ function Home() {
   // }
 
   return (
-    <div className={classes.o_Home}>
+    <div className={classes.o_Home} id='home_body'>
+      {/* <Reload/> */}
       <div className={classes.o_funney}>
         <div className={classes.o_funnney_title}>総資産</div>
         <div className={classes.o_funnney_total}>{funney}</div>
