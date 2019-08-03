@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { signInRequest, snackbarClose } from "../actions/SignIn";
+import { signInRequest, snackbarClose } from "../actions/User";
 import { TextField, Button, Snackbar, SnackbarContent, makeStyles } from '@material-ui/core';
 import ErrorIcon from '@material-ui/icons/Error';
 import { Link } from 'react-router-dom'
@@ -9,7 +9,7 @@ import Logo from '../image/FUNneyLogo.png'
 function SignIn() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { snackbar } = useSelector(state => state.signInReducer);
+  const { snackbar } = useSelector(state => state.userReducer);
   const [data, setData] = React.useState({
     id: '',
     password: '',

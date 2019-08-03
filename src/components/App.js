@@ -20,7 +20,7 @@ const theme = createMuiTheme({
 });
 
 function App() {
-  const { id } = useSelector(state => state.signInReducer);
+  const { id } = useSelector(state => state.userReducer);
   return (
     <Router history={history}>
       { !id && <Redirect to="/login"/>}

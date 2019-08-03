@@ -1,13 +1,15 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { getAllFunneySuccess, getAllFunneyFailed } from '../actions/Funney'
 import { getFunneyApi } from '../apis/Funney';
+import {updateToken} from "../actions/User";
 
-export function* GetAllFunney(action) {
-  const { error, body } = yield call(getFunneyApi, action.data.id);
+export function* GetAllFunney(action, token) {
+  const { error, body, newToken } = yield call(getFunneyApi, action.data.id, token);
   if (error) {
     yield put(getAllFunneyFailed());
   } else {
     yield put(getAllFunneySuccess(body.balance));
+    yield put(updateToken(newToken));
   }
 }
 

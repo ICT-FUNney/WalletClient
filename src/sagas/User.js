@@ -1,30 +1,30 @@
 import { call, put, fork, join, takeEvery } from 'redux-saga/effects';
-import { signInSuccess, signInFailed, signUpSuccess, signUpFailed, snackbarOpen } from '../actions/SignIn';
-import {  signInApi, signUpApi } from '../apis/SignIn';
+import { signInSuccess, signInFailed, signUpSuccess, signUpFailed, snackbarOpen } from '../actions/User';
+import {  signInApi, signUpApi } from '../apis/User';
 import { GetAllFunney } from './Funney'
 import history from '../helpers/history';
 
 function* signIn(action) {
-  const { error } = yield call(signInApi, action.data);
+  const { newToken, error } = yield call(signInApi, action.data);
   if (error) {
     yield put(signInFailed());
     yield put(snackbarOpen());
   } else {
-    yield put(signInSuccess(action.data));
-    const GetAllFunneyTask = yield fork(GetAllFunney, action);
+    yield put(signInSuccess(action.data, newToken));
+    const GetAllFunneyTask = yield fork(GetAllFunney, action, newToken);
     yield join(GetAllFunneyTask);
     yield call(history.push, '/');
   }
 }
 
 function* signUp(action) {
-  const { error } = yield call(signUpApi, action.data);
+  const { newToken, error } = yield call(signUpApi, action.data);
   if (error) {
     yield put(signUpFailed());
     yield put(snackbarOpen());
   } else {
-    yield put(signUpSuccess(action.data));
-    const GetAllFunneyTask = yield fork(GetAllFunney, action);
+    yield put(signUpSuccess(action.data, newToken));
+    const GetAllFunneyTask = yield fork(GetAllFunney, action, newToken);
     yield join(GetAllFunneyTask);
     yield call(history.push, '/');
   }
