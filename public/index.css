@@ -1,16 +1,15 @@
 html{
-    height: 100%;
-    width:100%;
+    height: 100vh;
+    width: 100%;
 }
 body{
     margin: 0;
     padding: 0;
     height: 100%;
-    background: #FF8C00
 }
 #root {
     background: #ffffff;
     height: 100%;
     display: grid;
-    grid-template-rows: 56px 1fr auto;
+    grid-template-rows: calc(env(safe-area-inset-top) + 56px) auto calc(env(safe-area-inset-bottom) + 56px);
 }

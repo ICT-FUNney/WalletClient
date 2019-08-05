@@ -8,13 +8,13 @@ import HomeIcon from '@material-ui/icons/Home';
 import SendIcon from '@material-ui/icons/Send';
 import SettingsIcon from '@material-ui/icons/Settings';
 
-
 const useStyles = makeStyles({
   bottom_nav: {
     position: 'fixed',
     bottom: '0',
     width: '100%',
     gridRow: '3',
+    paddingBottom: 'env(safe-area-inset-bottom)',
   },
 });
 
