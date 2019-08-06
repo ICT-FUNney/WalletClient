@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/ICT-FUNney/WalletClient/compare/v1.0.2...v1.1.0) (2019-08-06)
+
+
+### Bug Fixes
+
+* send画面で発生していた頻繁にactionが起こる問題，及び入力のバリデーションを作成 ([609f9cb](https://github.com/ICT-FUNney/WalletClient/commit/609f9cb))
+* 通信中にbuttonを押下出来ないように変更 ([990d30c](https://github.com/ICT-FUNney/WalletClient/commit/990d30c))
+
+
+### Features
+
+* connectionの状態を管理するStoreの追加 ([8f99cfc](https://github.com/ICT-FUNney/WalletClient/commit/8f99cfc))
+* QRコードで送金出来る機能の追加 ([7aae268](https://github.com/ICT-FUNney/WalletClient/commit/7aae268))
+* tokenに対応した形にしました ([90d6898](https://github.com/ICT-FUNney/WalletClient/commit/90d6898))
+
 ### [1.0.2](https://github.com/ICT-FUNney/WalletClient/compare/v1.0.1...v1.0.2) (2019-07-01)
 
 
