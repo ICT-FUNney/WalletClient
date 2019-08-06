@@ -61,8 +61,8 @@ const AlertDialog = (props) => {
             </Button>
             <Button
               onClick={() => {
-                props.send()
-                props.closeDialog()
+                props.send();
+                props.closeDialog();
               }}
             color="primary" autoFocus>
               OK
@@ -75,15 +75,17 @@ const AlertDialog = (props) => {
   else{
     return "";
   }
-}
+};
 
 function Send() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { id, token } = useSelector(state => state.userReducer);
+  const { isConnecting } = useSelector(state => state.connectingReducer);
   useEffect(() => {
     dispatch(setPath('Send'))
-  });
+    // eslint-disable-next-line
+  },[]);
 
   function send(){
     dispatch(sendRequest({balance: value.money, id, send_id: value.number}, token))
@@ -101,6 +103,7 @@ function Send() {
         <TextField
           id="standard-dense"
           label="送金金額"
+          type='number'
           className={classes.TextFieldForMoney}
           margin="dense"
           onChange={e => {
@@ -125,6 +128,7 @@ function Send() {
         <Button
           variant="contained"
           className={classes.button}
+          disabled={!value.money || !value.number || isConnecting}
           onClick={()=>{
             setValue({
               ...value,

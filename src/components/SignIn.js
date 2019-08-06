@@ -10,6 +10,7 @@ function SignIn() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { snackbar } = useSelector(state => state.userReducer);
+  const { isConnecting } = useSelector(state => state.connectingReducer);
   const [data, setData] = React.useState({
     id: '',
     password: '',
@@ -61,7 +62,7 @@ function SignIn() {
         />
       </form>
       <div className={classes.buttonContainer}>
-        <Button id='signInButton' className={classes.button} variant="contained" onClick={signIn}>
+        <Button id='signInButton' className={classes.button} variant="contained" onClick={signIn} disabled={isConnecting}>
           Sign in
         </Button>
       </div>

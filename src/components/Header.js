@@ -10,6 +10,7 @@ const useStyles = makeStyles({
   app_bar: {
     position: 'fixed',
     gridRow: '1',
+    paddingTop: 'env(safe-area-inset-top)',
   },
 });
 
