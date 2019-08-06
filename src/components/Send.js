@@ -81,6 +81,7 @@ function Send() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { id } = useSelector(state => state.signInReducer);
+  const { isConnecting } = useSelector(state => state.connectingReducer);
   useEffect(() => {
     dispatch(setPath('Send'))
     // eslint-disable-next-line
@@ -127,7 +128,7 @@ function Send() {
         <Button
           variant="contained"
           className={classes.button}
-          disabled={!value.money || !value.number}
+          disabled={!value.money || !value.number || isConnecting}
           onClick={()=>{
             setValue({
               ...value,

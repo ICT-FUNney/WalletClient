@@ -10,6 +10,7 @@ function SignUp() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { snackbar } = useSelector(state => state.signInReducer);
+  const { isConnecting } = useSelector(state => state.connectingReducer);
   const [data, setData] = React.useState({
     id: '',
     password: '',
@@ -74,7 +75,7 @@ function SignUp() {
         </div>
       </form>
       <div className={classes.buttonContainer}>
-        <Button id='signUpButton' className={classes.button} variant="contained" onClick={signUp} disabled={!(data.password && data.password2 && data.password === data.password2)}>
+        <Button id='signUpButton' className={classes.button} variant="contained" onClick={signUp} disabled={!(data.id && data.password && data.password2 && data.password === data.password2 && !isConnecting)}>
           Sign Up
         </Button>
       </div>
