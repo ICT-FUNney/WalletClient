@@ -81,6 +81,7 @@ function Send() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { id } = useSelector(state => state.signInReducer);
+  const { isConnecting } = useSelector(state => state.connectingReducer);
   useEffect(() => {
     dispatch(setPath('Send'))
   });
@@ -125,6 +126,7 @@ function Send() {
         <Button
           variant="contained"
           className={classes.button}
+          disabled={isConnecting}
           onClick={()=>{
             setValue({
               ...value,
