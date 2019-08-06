@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import { useDispatch } from "react-redux";
 import { setPath } from "../actions/Path";
-import { signOut } from "../actions/SignIn";
+import { signOut } from "../actions/User";
 
 import { makeStyles, Typography, ListSubheader, List, ListItem, ListItemIcon, ListItemText, Divider } from '@material-ui/core'
 import {AccountCircle, Bluetooth, Sync, MoreHoriz, ExitToApp} from '@material-ui/icons'

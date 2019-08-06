@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 import pathReducer from './Path'
-import signInReducer from './SignIn'
+import userReducer from './User'
 import funneyReducer from './Funney'
 import connectingReducer from "./Connecting";
 
 const reducers = combineReducers({
   pathReducer,
-  signInReducer,
+  userReducer,
   funneyReducer,
   connectingReducer,
 });

@@ -5,10 +5,11 @@ export const signInRequest = (data) => {
   }
 };
 
-export const signInSuccess = (data) => {
+export const signInSuccess = (data, token) => {
   return {
     type: 'SIGN_IN_SUCCESS',
     data,
+    token
   }
 };
 
@@ -25,16 +26,24 @@ export const signUpRequest = (data) => {
   }
 };
 
-export const signUpSuccess = (data) => {
+export const signUpSuccess = (data, token) => {
   return {
     type: 'SIGN_UP_SUCCESS',
     data,
+    token
   }
 };
 
 export const signUpFailed = () => {
   return {
     type: 'SIGN_UP_FAILED',
+  }
+};
+
+export const updateToken = (token) => {
+  return {
+    type: 'UPDATE_TOKEN',
+    token
   }
 };
 

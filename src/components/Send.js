@@ -80,7 +80,7 @@ const AlertDialog = (props) => {
 function Send() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { id } = useSelector(state => state.signInReducer);
+  const { id, token } = useSelector(state => state.userReducer);
   const { isConnecting } = useSelector(state => state.connectingReducer);
   useEffect(() => {
     dispatch(setPath('Send'))
@@ -88,7 +88,7 @@ function Send() {
   },[]);
 
   function send(){
-    dispatch(sendRequest({balance: value.money, id, send_id: value.number}))
+    dispatch(sendRequest({balance: value.money, id, send_id: value.number}, token))
   }
 
   const [value, setValue] = React.useState({
