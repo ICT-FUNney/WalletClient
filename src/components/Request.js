@@ -67,7 +67,7 @@ const useStyles = makeStyles({
     top: '10%',
     borderRadius: '10px',
     boxShadow: '0px -3px 5px rgba(0,0,0,0.4)',
-    transition: 'top 1s'
+    transition: 'top 0.6s'
   },
   backDropWrapperDummy: {
     position: 'absolute',
@@ -78,7 +78,7 @@ const useStyles = makeStyles({
     top: '105%',
     borderRadius: '10px',
     boxShadow: '0px -3px 5px rgba(0,0,0,0.4)',
-    transition: 'top 1s'
+    transition: 'top 0.6s'
   },
   text: {
     paddingLeft: '2vw'
@@ -91,7 +91,7 @@ const useStyles = makeStyles({
 function Request() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { id } = useSelector(state => state.signInReducer);
+  const { id } = useSelector(state => state.userReducer);
   useEffect(() => {
     dispatch(setPath('Request'))
     // eslint-disable-next-line
