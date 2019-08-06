@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import { setPath } from "../actions/Path";
 import { sendRequest } from "../actions/Send";
+import { getParam } from '../helpers/GetQueryParam'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -26,16 +27,37 @@ const useStyles = makeStyles(theme => ({
   },
   TextFieldForMoney: {
     width: "100%",
+    '& label.Mui-focused': {
+      color: '#FF8C00',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#FF8C00',
+    },
   },
   TextFieldForNumber: {
     width: "100%",
     marginTop: "5vh",
-    marginBottom: "8vh"
+    marginBottom: "8vh",
+    '& label.Mui-focused': {
+      color: '#FF8C00',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#FF8C00',
+    },
   },
   button: {
     width: "40%",
     backgroundColor: '#FF8C00',
     color: '#ffffff',
+    '&:hover': {
+      backgroundColor: '#FF8C00',
+      borderColor: '#FF8C00',
+    },
+    '&:active': {
+      boxShadow: 'none',
+      backgroundColor: '#c55d00',
+      borderColor: '#c55d00',
+    }
   }
 }));
 
@@ -92,8 +114,8 @@ function Send() {
   }
 
   const [value, setValue] = React.useState({
-    money: "",
-    number: "",
+    money: getParam('value', window.location.href) || "",
+    number: getParam('id', window.location.href) || "",
     dialog_flag: false,
   });
 
@@ -106,6 +128,7 @@ function Send() {
           type='number'
           className={classes.TextFieldForMoney}
           margin="dense"
+          value={value.money}
           onChange={e => {
             setValue({
               ...value,
@@ -118,6 +141,7 @@ function Send() {
           label="送り先 学籍番号"
           className={classes.TextFieldForNumber}
           margin="dense"
+          value={value.number}
           onChange={e => {
             setValue({
               ...value,

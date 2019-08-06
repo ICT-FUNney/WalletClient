@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import HomeIcon from '@material-ui/icons/Home';
 import SendIcon from '@material-ui/icons/Send';
+import RequestIcon from '@material-ui/icons/GetApp';
 import SettingsIcon from '@material-ui/icons/Settings';
 
 const useStyles = makeStyles({
@@ -32,9 +33,10 @@ function Footer() {
       showLabels
       className={classes.bottom_nav}
     >
-      <BottomNavigationAction component={Link}  to="/" label="Home" icon={<HomeIcon />} />
-      <BottomNavigationAction component={Link} to="/send" label="Send" icon={<SendIcon />} />
-      <BottomNavigationAction component={Link} to="/settings" label="Settings" icon={<SettingsIcon />} />
+      <BottomNavigationAction component={Link} style={{minWidth: '0'}} to="/" label="Home" icon={<HomeIcon />} />
+      <BottomNavigationAction component={Link} style={{minWidth: '0'}} to="/send" label="Send" icon={<SendIcon />} />
+      <BottomNavigationAction component={Link} style={{minWidth: '0'}} to="/request" label="Request" icon={<RequestIcon />} />
+      <BottomNavigationAction component={Link} style={{minWidth: '0'}} to="/settings" label="Settings" icon={<SettingsIcon />} />
     </BottomNavigation>
   )
 }
