@@ -1,7 +1,8 @@
-export const sendRequest = (data) => {
+export const sendRequest = (data, token) => {
   return {
     type: 'SEND_REQUEST',
     data,
+    token
   }
 };
 

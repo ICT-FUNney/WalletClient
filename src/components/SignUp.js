@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {signUpRequest, snackbarClose} from "../actions/SignIn";
+import {signUpRequest, snackbarClose} from "../actions/User";
 import {TextField, Button, makeStyles, SnackbarContent, Snackbar} from '@material-ui/core';
 import {Link} from 'react-router-dom'
 import Logo from '../image/FUNneyLogo.png'
@@ -9,7 +9,8 @@ import ErrorIcon from '@material-ui/icons/Error';
 function SignUp() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { snackbar } = useSelector(state => state.signInReducer);
+  const { snackbar } = useSelector(state => state.userReducer);
+  const { isConnecting } = useSelector(state => state.connectingReducer);
   const [data, setData] = React.useState({
     id: '',
     password: '',
@@ -74,7 +75,7 @@ function SignUp() {
         </div>
       </form>
       <div className={classes.buttonContainer}>
-        <Button id='signUpButton' className={classes.button} variant="contained" onClick={signUp} disabled={!(data.password && data.password2 && data.password === data.password2)}>
+        <Button id='signUpButton' className={classes.button} variant="contained" onClick={signUp} disabled={!(data.id && data.password && data.password2 && data.password === data.password2 && !isConnecting)}>
           Sign Up
         </Button>
       </div>

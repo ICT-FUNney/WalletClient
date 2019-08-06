@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { signInRequest, snackbarClose } from "../actions/SignIn";
+import { signInRequest, snackbarClose } from "../actions/User";
 import { TextField, Button, Snackbar, SnackbarContent, makeStyles } from '@material-ui/core';
 import ErrorIcon from '@material-ui/icons/Error';
 import { Link } from 'react-router-dom'
@@ -9,7 +9,8 @@ import Logo from '../image/FUNneyLogo.png'
 function SignIn() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { snackbar } = useSelector(state => state.signInReducer);
+  const { snackbar } = useSelector(state => state.userReducer);
+  const { isConnecting } = useSelector(state => state.connectingReducer);
   const [data, setData] = React.useState({
     id: '',
     password: '',
@@ -61,7 +62,7 @@ function SignIn() {
         />
       </form>
       <div className={classes.buttonContainer}>
-        <Button id='signInButton' className={classes.button} variant="contained" onClick={signIn}>
+        <Button id='signInButton' className={classes.button} variant="contained" onClick={signIn} disabled={isConnecting}>
           Sign in
         </Button>
       </div>
