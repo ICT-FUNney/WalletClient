@@ -47,7 +47,7 @@ const useStyles = makeStyles({
     fontSize: '1rem'
   },
   o_funney_button: {
-    outline: 'none'
+    border: 'none'
   }
 });
 
