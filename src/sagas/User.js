@@ -27,7 +27,7 @@ function* signIn(action) {
 }
 
 function* signUp(action) {
-  yield put(willConnect);
+  yield put(willConnect());
   const { newToken, error } = yield call(signUpApi, action.data);
   if (error) {
     yield put(doneConnect());
