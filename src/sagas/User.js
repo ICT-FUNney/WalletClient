@@ -43,7 +43,7 @@ function* signUp(action) {
 }
 
 function* signOut() {
-  yield call(history.push, '/login');
+  yield call(history.push, '/signin');
 }
 
 const saga = [
