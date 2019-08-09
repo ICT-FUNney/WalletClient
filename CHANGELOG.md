@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/ICT-FUNney/WalletClient/compare/v1.1.0...v1.1.1) (2019-08-09)
+
+
+### Bug Fixes
+
+* 新規登録からHomeに飛べるバグの修正 ([99077fe](https://github.com/ICT-FUNney/WalletClient/commit/99077fe))
+
 ## [1.1.0](https://github.com/ICT-FUNney/WalletClient/compare/v1.0.2...v1.1.0) (2019-08-06)
 
 
