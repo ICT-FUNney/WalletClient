@@ -16,3 +16,11 @@ export const getAllFunneyFailed = (data) => {
       data,
     }
 };
+
+export const reloadFunneyRequest = (data, token) => {
+  return {
+    type: 'RELOAD_FUNNEY_REQUEST',
+    data,
+    token
+  }
+};
