@@ -80,7 +80,7 @@ function SignUp() {
         </Button>
       </div>
       <div className={classes.signInContainer}>
-        <Link to='/login' className={classes.signIn}>既に登録されている方はこちら</Link>
+        <Link to='/signin' className={classes.signIn}>既に登録されている方はこちら</Link>
       </div>
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center'}}
