@@ -12,7 +12,7 @@ export function* GetAllFunney(action, token) {
     yield put(getAllFunneyFailed());
   } else {
     yield put(doneConnect());
-    yield put(getAllFunneySuccess(body.balance));
+    yield put(getAllFunneySuccess(body));
     yield put(updateToken(newToken));
   }
 }

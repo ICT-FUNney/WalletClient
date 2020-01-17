@@ -33,10 +33,11 @@ function HistoryItem(props) {
     const classes = useStyles();
     const msec = Date.parse(props.history.timestamp);
     const date = new Date(msec);
-    const month = date.getMonth();
+    const month = date.getMonth() + 1;
     const day = date.getDate();
     const funney = Number(props.history.amount);
     // const [day, setDay] = React.useState();
+    console.log(props)
     return (
         <li className={classes.o_history_list}>
             <div className={classes.o_date}>{month > 9 ? month : "0" + month.toString()}/{day > 9 ? day : "0" + day.toString()}</div>

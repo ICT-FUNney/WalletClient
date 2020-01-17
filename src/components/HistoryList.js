@@ -24,10 +24,17 @@ function HistoryList() {
         dispatch(setPath('Home'))
     });
 
+    let dest = '';
+    let source = '';
+
+    for (let i = 0; i < history.length; i++) {
+
+    }
+
     return (
         <div className={classes.o_Home}>
             <ul className={classes.o_list}>
-                {history.map((item,index) => {
+                {history.map((item, index) => {
                     return (<HistoryItem key={index} history={item} />);
                 })}
             </ul>

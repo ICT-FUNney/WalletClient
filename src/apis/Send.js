@@ -4,7 +4,7 @@ export function sendApi(data, token) {
   return request
     .post(`https://funfintech.tk/api/v2/transaction`)
     .set('authorization', token)
-    .send({balance: parseInt(data.balance), id: data.id, send_id: data.send_id})
+    .send({ amount: parseInt(data.balance), id: data.id, send_id: data.send_id })
     .then(response => {
       const newToken = response.header.authorization;
       const body = response.body;
