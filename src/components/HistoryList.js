@@ -24,13 +24,6 @@ function HistoryList() {
         dispatch(setPath('Home'))
     });
 
-    let dest = '';
-    let source = '';
-
-    for (let i = 0; i < history.length; i++) {
-
-    }
-
     return (
         <div className={classes.o_Home}>
             <ul className={classes.o_list}>

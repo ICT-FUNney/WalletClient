@@ -37,11 +37,11 @@ function HistoryItem(props) {
     const day = date.getDate();
     const funney = Number(props.history.amount);
     // const [day, setDay] = React.useState();
-    console.log(props)
+    // console.log(props)
     return (
         <li className={classes.o_history_list}>
             <div className={classes.o_date}>{month > 9 ? month : "0" + month.toString()}/{day > 9 ? day : "0" + day.toString()}</div>
-            <div className={classes.o_io}>出</div>
+            <div className={classes.o_io}>入</div>
             <div className={classes.o_user}>UserName</div>
             <div className={classes.o_amount}>{funney}FNY</div>
         </li>
